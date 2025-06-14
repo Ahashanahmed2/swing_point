@@ -3,9 +3,7 @@ name: Swing Point
 
 on: 
     schedule:
-        - cron: '4 11 * * *'
-env:
-  TZ: Asia/Kuala_Lumpur
+        - cron: '14 19 * * *'
 
 
 

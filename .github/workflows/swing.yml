@@ -1,0 +1,53 @@
+name: Swing Point
+
+
+on: 
+    schedule:
+        - cron: '* * * * *'
+env:
+  TZ: Asia/Kuala_Lumpur
+
+
+
+jobs:
+  run-script-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+   
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Rclone
+        run: |
+          sudo apt install rclone -y
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Your Script
+        run: |
+          python main.py
+
+
+      - name: Configure Rclone
+        env:
+          RCLONE_CONFIG: ${{ secrets.RCLONE_CONFIG }}
+        run: |
+          mkdir -p ~/.config/rclone
+          echo "$RCLONE_CONFIG" > ~/.config/rclone/rclone.conf
+
+      - name: Set MongoDB URL
+        env:
+          MONGO_URL: ${{ secrets.MONGO_URL }}
+        run: |
+          echo "MongoDB URL is set"
+
+      - name: Upload swing folder to GDrive
+        run: |
+          rclone copy /swing swing:/ --verbose

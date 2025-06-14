@@ -9,10 +9,9 @@ load_dotenv()
 from collections import defaultdict
 swing_high_candles = defaultdict(list)
 swing_high_confirms = defaultdict(list)
-
-os.makedirs('swing/swing_low',exist_ok=True)
-os.makedirs('swing/swing_high/candle/',exist_ok=True)
-os.makedirs('swing/swing_high/buy/',exist_ok=True)
+os.makedirs('./swing/swing_low/',exist_ok=True)
+os.makedirs('./swing/swing_high/candle/',exist_ok=True)
+os.makedirs('./swing/swing_high/buy/',exist_ok=True)
 # MongoDB-এ সংযোগ
 mongourl = os.getenv("MONGO_URL")
 client = MongoClient(mongourl)
@@ -36,7 +35,7 @@ for symbol, group_df in grouped:
        
     # for i,symbol,low,date,high,open,close,next2close in swing_lows:
     #     print(f"swing lows:{symbol} date:{date} close:{close} next2close:{next2close} index:{i} \n")
-    #     df.to_csv('swing/swing_low/{symbol}.csv')
+    #     df.to_csv('./swing/swing_low/{symbol}.csv')
 
    
     if len(swing_highs)>0:
@@ -53,8 +52,8 @@ for symbol, group_df in grouped:
 
         # আলাদা CSV বানানো
 for symbol in swing_high_candles:
-    pd.DataFrame(swing_high_candles[symbol]).to_csv(f'swing/swing_high/candle/{symbol}.csv', index=False)
-    pd.DataFrame(swing_high_confirms[symbol]).to_csv(f'swing/swing_high/buy/{symbol}.csv', index=False)
+    pd.DataFrame(swing_high_candles[symbol]).to_csv(f'./swing/swing_high/candle/{symbol}.csv', index=False)
+    pd.DataFrame(swing_high_confirms[symbol]).to_csv(f'./swing/swing_high/buy/{symbol}.csv', index=False)
 
  
     #print(f"{symbol} - Swing Lows: {swing_lows}")
@@ -63,4 +62,4 @@ for symbol in swing_high_candles:
 print(f"swing_high:{len(grouped)}")
 if grouped:
    # Google Drive-এ আপলোড
-    subprocess.run(["rclone", "copy", './swing', "swing:/swing", "--verbose"])
+    subprocess.run(["rclone", "copy", './swing', "swing:./swing", "--verbose"])

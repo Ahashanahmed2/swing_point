@@ -22,9 +22,6 @@ jobs:
         run: |
           sudo apt install rclone -y
 
-      - name: Create Output Directory
-        run: |
-          mkdir -p /swing
 
       - name: Install Dependencies
         run: |

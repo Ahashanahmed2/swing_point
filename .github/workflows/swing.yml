@@ -42,6 +42,11 @@ jobs:
           mkdir -p ~/.config/rclone
           echo "$RCLONE_CONFIG" > ~/.config/rclone/rclone.conf
 
+      - name: Write Service Account File
+        run: |
+          echo '${{ secrets.SERVICE_ACCOUNT_JSON }}' > /tmp/service-account.json
+
+
       - name: Set MongoDB URL
         env:
           MONGO_URL: ${{ secrets.MONGO_URL }}

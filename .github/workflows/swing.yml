@@ -2,7 +2,7 @@ name: Swing Point
 
 on: 
   schedule:
-    - cron: '55 3 * * *'
+    - cron: '3 * * * *'
 
 jobs:
   run-script-and-upload:

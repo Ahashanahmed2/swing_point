@@ -47,8 +47,8 @@ jobs:
           echo "MongoDB URL is set"
 
       - name: Run Your Script
-        run: |
-          python main.py
+        run: 
+          python scripts/mongodb.py
 
       - name: Upload swing folder to GDrive
         run: |

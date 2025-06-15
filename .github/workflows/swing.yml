@@ -60,3 +60,5 @@ jobs:
         run: |
           pwd
           ls -la ./swing
+          ls -la ./swing/swing_low
+          ls -la ./swing/swing_high

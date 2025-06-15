@@ -18,9 +18,8 @@ mongourl = os.getenv("MONGO_URL")
 client = MongoClient(mongourl)
 db = client["candleData"]
 collection = db["candledatas"]
-# Write test file to verify directory creation
-with open('test.txt', 'w') as f:
-    f.write("Test file written successfully.")
+
+
 # সবগুলো ডকুমেন্ট নেওয়া (_id ছাড়া)
 data = list(collection.find({}, {'_id': 0}))
 df = pd.DataFrame(data)
@@ -55,8 +54,8 @@ for symbol, group_df in grouped:
 
         # আলাদা CSV বানানো
 for symbol in swing_high_candles:
-    pd.DataFrame(swing_high_candles[symbol]).to_csv(f'./swing/swing_high/candle/{symbol}.csv', index=False)
-    pd.DataFrame(swing_high_confirms[symbol]).to_csv(f'./swing/swing_high/buy/{symbol}.csv', index=False)
+    pd.DataFrame(swing_high_candles[symbol]).to_csv(f'/home/runner/work/swing_point/swing_point/swing/swing_high/candle/{symbol}.csv', index=False)
+    pd.DataFrame(swing_high_confirms[symbol]).to_csv(f'/home/runner/work/swing_point/swing_point/swing/swing_high/buy/{symbol}.csv', index=False)
 
  
     #print(f"{symbol} - Swing Lows: {swing_lows}")

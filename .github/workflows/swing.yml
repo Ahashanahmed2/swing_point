@@ -21,6 +21,10 @@ jobs:
       - name: Install Rclone
         run: |
           sudo apt install rclone -y
+      - name: Show Current Directory Contents
+        run: |
+          pwd
+          ls -la
 
 
       - name: Install Dependencies

@@ -54,4 +54,4 @@ jobs:
 
       - name: Upload swing folder to GDrive
         run: |
-          rclone copy /swing swing:/ --verbose
+          rclone copy /home/runner/work/swing_point/swing_point/swing swing:/ --verbose

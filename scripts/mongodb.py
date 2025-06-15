@@ -54,8 +54,8 @@ for symbol, group_df in grouped:
 
         # আলাদা CSV বানানো
 for symbol in swing_high_candles:
-    pd.DataFrame(swing_high_candles[symbol]).to_csv(f'/home/runner/work/swing_point/swing_point/swing/swing_high/candle/{symbol}.csv', index=False)
-    pd.DataFrame(swing_high_confirms[symbol]).to_csv(f'/home/runner/work/swing_point/swing_point/swing/swing_high/buy/{symbol}.csv', index=False)
+    pd.DataFrame(swing_high_candles[symbol]).to_csv(f'./swing/swing_high/candle/{symbol}.csv', index=False)
+    pd.DataFrame(swing_high_confirms[symbol]).to_csv(f'./swing/swing_high/buy/{symbol}.csv', index=False)
 
  
     #print(f"{symbol} - Swing Lows: {swing_lows}")

@@ -62,3 +62,4 @@ jobs:
           ls -la ./swing
           ls -la ./swing/swing_low
           ls -la ./swing/swing_high
+          ls -la ./swing/swing_high/buy

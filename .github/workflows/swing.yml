@@ -52,9 +52,7 @@ jobs:
         run: 
           python scripts/mongodb.py
 
-      - name: Upload swing folder to GDrive
-        run: |
-          rclone copy ./swing swing:/SwingFolder --verbose
+      
 
       - name: Show Current Directory Contents
         run: |

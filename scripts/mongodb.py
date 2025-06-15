@@ -61,6 +61,3 @@ for symbol in swing_high_candles:
     #print(f"{symbol} - Swing Highs: {swing_highs}")*-
  
 print(f"swing_high:{len(grouped)}")
-if grouped:
-   # Google Drive-এ আপলোড
-    subprocess.run(["rclone", "copy", './swing', "swing:./swing", "--verbose"])

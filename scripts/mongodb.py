@@ -19,7 +19,7 @@ client = MongoClient(mongourl)
 db = client["candleData"]
 collection = db["candledatas"]
 # Write test file to verify directory creation
-with open('./swing/test.txt', 'w') as f:
+with open('test.txt', 'w') as f:
     f.write("Test file written successfully.")
 # সবগুলো ডকুমেন্ট নেওয়া (_id ছাড়া)
 data = list(collection.find({}, {'_id': 0}))
@@ -27,7 +27,7 @@ df = pd.DataFrame(data)
 
 # symbol অনুযায়ী group করা
 grouped = df.groupby('symbol')
-
+swing_high_candles['TEST_SYMBOL'] = [group_df.head(1)]  # Add one row as test
 # প্রতিটি কোম্পানির জন্য identify_swing_points() কল করা
 for symbol, group_df in grouped:
    

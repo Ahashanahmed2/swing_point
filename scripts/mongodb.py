@@ -9,7 +9,8 @@ load_dotenv()
 from collections import defaultdict
 swing_high_candles = defaultdict(list)
 swing_high_confirms = defaultdict(list)
-os.makedirs('./swing/swing_low/',exist_ok=True)
+
+os.makedirs('./swing/swing_low',exist_ok=True)
 os.makedirs('./swing/swing_high/candle/',exist_ok=True)
 os.makedirs('./swing/swing_high/buy/',exist_ok=True)
 # MongoDB-এ সংযোগ
@@ -35,7 +36,7 @@ for symbol, group_df in grouped:
        
     # for i,symbol,low,date,high,open,close,next2close in swing_lows:
     #     print(f"swing lows:{symbol} date:{date} close:{close} next2close:{next2close} index:{i} \n")
-    #     df.to_csv('./swing/swing_low/{symbol}.csv')
+    #     df.to_csv('swing/swing_low/{symbol}.csv')
 
    
     if len(swing_highs)>0:

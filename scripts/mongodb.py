@@ -27,7 +27,7 @@ df = pd.DataFrame(data)
 
 # symbol অনুযায়ী group করা
 grouped = df.groupby('symbol')
-swing_high_candles['TEST_SYMBOL'] = [group_df.head(1)]  # Add one row as test
+
 # প্রতিটি কোম্পানির জন্য identify_swing_points() কল করা
 for symbol, group_df in grouped:
    

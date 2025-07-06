@@ -3,7 +3,6 @@ from pymongo import MongoClient
 import pandas as pd
 from swing_point import identify_swing_points
 import os
-import subprocess
 from dotenv import load_dotenv
 load_dotenv()
 from collections import defaultdict
@@ -57,9 +56,4 @@ for symbol in swing_high_candles:
     candle=pd.DataFrame(swing_high_candles[symbol]).to_csv(f'./swing/swing_high/candle/{symbol}.csv', index=False)
     buy=pd.DataFrame(swing_high_confirms[symbol]).to_csv(f'./swing/swing_high/buy/{symbol}.csv', index=False)
     print(f"candle:{candle},buy:{buy}")
-# Google Drive-এ আপলোড
-subprocess.run(["rclone", "copy", './swing', "swing:./SwingFolder", "--verbose"])
-    #print(f"{symbol} - Swing Lows: {swing_lows}")
-    #print(f"{symbol} - Swing Highs: {swing_highs}")*-
- 
-print(f"swing_high:{len(grouped)}")
+
